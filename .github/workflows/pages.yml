@@ -43,6 +43,23 @@ jobs:
           fi
           echo "✓ Site structure validated successfully"
 
+      - name: Validate assets
+        run: |
+          echo "Validating assets..."
+          if [ ! -d "site/assets" ]; then
+            echo "Error: site/assets directory not found"
+            exit 1
+          fi
+          if [ ! -f "site/assets/og-image.png" ]; then
+            echo "Error: OG image not found"
+            exit 1
+          fi
+          if [ ! -f "site/assets/sample.pdf" ]; then
+            echo "Error: Sample PDF not found"
+            exit 1
+          fi
+          echo "✓ Assets validated successfully"
+
       # No build step required; upload /site as artifact
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -51,6 +68,17 @@ jobs:
 
       - name: Build complete
         run: echo "✓ Build completed successfully - site artifact created"
+
+  # PR validation complete (runs only on PRs)
+  pr-validation-complete:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: PR validation successful
+        run: |
+          echo "✓ Pull request validation completed successfully!"
+          echo "All checks passed - ready for review and merge."
 
   # Deploy to GitHub Pages (only on main branch)
   deploy:
