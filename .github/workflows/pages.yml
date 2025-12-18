@@ -15,11 +15,33 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Build and validate the site (runs on all events)
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Validate site structure
+        run: |
+          echo "Validating site structure..."
+          if [ ! -d "site" ]; then
+            echo "Error: site directory not found"
+            exit 1
+          fi
+          if [ ! -f "site/index.html" ]; then
+            echo "Error: site/index.html not found"
+            exit 1
+          fi
+          if [ ! -f "site/styles.css" ]; then
+            echo "Error: site/styles.css not found"
+            exit 1
+          fi
+          if [ ! -f "site/app.js" ]; then
+            echo "Error: site/app.js not found"
+            exit 1
+          fi
+          echo "✓ Site structure validated successfully"
 
       # No build step required; upload /site as artifact
       - name: Upload Pages artifact
@@ -27,6 +49,10 @@ jobs:
         with:
           path: site
 
+      - name: Build complete
+        run: echo "✓ Build completed successfully - site artifact created"
+
+  # Deploy to GitHub Pages (only on main branch)
   deploy:
     environment:
       name: github-pages
@@ -38,3 +64,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deployment complete
+        run: echo "✓ Deployed to ${{ steps.deployment.outputs.page_url }}"
