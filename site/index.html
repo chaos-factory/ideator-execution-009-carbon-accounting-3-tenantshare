@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    
+    <title>TenantShare – Allocate building energy to tenants and issue statements</title>
+    <meta name="description" content="TenantShare allocates building energy and emissions to tenants. Import data from Utility Binder, generate GHG Protocol-compliant statements, and export PDFs and CSV. Client-side, privacy-first, no signup required.">
+    <meta name="keywords" content="tenant energy allocation, carbon accounting, GHG Protocol, eGRID, utility allocation, CAM reconciliation, energy statements, client-side carbon, Utility Binder">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TenantShare – Allocate building energy to tenants and issue statements">
+    <meta property="og:description" content="TenantShare allocates building energy and emissions to tenants. Import data from Utility Binder, generate GHG Protocol-compliant statements, and export PDFs and CSV. Client-side, privacy-first, no signup required.">
+    <meta property="og:url" content="https://chaos-factory.github.io/ideator-execution-009-carbon-accounting-3-tenantshare">
+    <meta property="og:image" content="https://chaos-factory.github.io/ideator-execution-009-carbon-accounting-3-tenantshare/assets/og-image.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TenantShare – Allocate building energy to tenants and issue statements">
+    <meta name="twitter:description" content="TenantShare allocates building energy and emissions to tenants. Import data from Utility Binder, generate GHG Protocol-compliant statements, and export PDFs and CSV.">
+    <meta name="twitter:image" content="https://chaos-factory.github.io/ideator-execution-009-carbon-accounting-3-tenantshare/assets/og-image.png">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://chaos-factory.github.io/ideator-execution-009-carbon-accounting-3-tenantshare">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <meta name="theme-color" content="#0066cc">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    
+    <!-- Announcement Bar -->
+    <div id="announcement-bar" class="announcement-bar">
+        <div class="announcement-content">
+            <span><strong>New:</strong> One-click import from Utility Binder. Try it on a sample building—no signup.</span>
+            <button id="dismiss-announcement" class="dismiss-btn" aria-label="Dismiss announcement">&times;</button>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <div class="container header-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="TenantShare logo">
+                    <rect x="4" y="8" width="24" height="4" rx="1" fill="#0066cc"/>
+                    <rect x="4" y="14" width="18" height="4" rx="1" fill="#0066cc"/>
+                    <rect x="4" y="20" width="12" height="4" rx="1" fill="#0066cc"/>
+                </svg>
+                <span class="logo-text">TenantShare</span>
+            </div>
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <a href="#product">Product</a>
+                <a href="#how">How it works</a>
+                <a href="#templates">Templates</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#docs">Docs</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#support">Support</a>
+            </nav>
+            <div class="header-ctas">
+                <button class="btn btn-secondary" data-action="import" aria-label="Import from Utility Binder">Import from Utility Binder</button>
+                <button class="btn btn-primary" data-action="launch" aria-label="Launch TenantShare">Launch TenantShare</button>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Allocate building energy to tenants. Issue GHG Protocol-compliant statements.</h1>
+                    <p class="hero-subhead">Import from Utility Binder, allocate by square footage, generate PDFs and CSV exports. Transparent, auditable, client-side. No signup required.</p>
+                    
+                    <div class="hero-ctas">
+                        <button class="btn btn-primary btn-large" data-action="launch">Launch TenantShare</button>
+                        <button class="btn btn-secondary btn-large" data-action="import">Import from Utility Binder</button>
+                    </div>
+                    
+                    <div class="hero-links">
+                        <a href="#walkthrough">Watch a 60-second walkthrough</a>
+                        <span class="separator">•</span>
+                        <a href="/assets/sample.pdf" download>Download a sample PDF</a>
+                    </div>
+                    
+                    <div class="trust-line">
+                        <small>Built for CAM transparency. Factorized via Utility Binder (GHG Protocol, eGRID2023, EPA Hub 2025).</small>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-flow-animation">
+                        <div class="flow-frame active" data-frame="1">
+                            <div class="frame-content">
+                                <span class="frame-icon">🏢</span>
+                                <span class="frame-text">Select Building</span>
+                            </div>
+                        </div>
+                        <div class="flow-frame" data-frame="2">
+                            <div class="frame-content">
+                                <span class="frame-icon">📊</span>
+                                <span class="frame-text">Generate Statements</span>
+                            </div>
+                        </div>
+                        <div class="flow-frame" data-frame="3">
+                            <div class="frame-content">
+                                <span class="frame-icon">📥</span>
+                                <span class="frame-text">Download PDFs</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mockup-stack">
+                        <div class="mockup-card">
+                            <div class="mockup-header">TenantShare Statement</div>
+                            <div class="mockup-body">
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line short"></div>
+                                <div class="mockup-warning">
+                                    ⚠️ Shares sum to 96%; 4% unallocated (landlord)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Product Section -->
+        <section id="product" class="product-section section">
+            <div class="container">
+                <h2>Built for property managers, landlords, and sustainability teams</h2>
+                <p class="section-intro">TenantShare replaces manual spreadsheets and opaque CAM reconciliations with transparent, auditable tenant energy statements.</p>
+                
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Who it's for</h3>
+                        <ul class="feature-list">
+                            <li>Property managers issuing annual CAM or energy statements</li>
+                            <li>Landlords with multi-tenant buildings</li>
+                            <li>Sustainability coordinators tracking Scope 3 emissions</li>
+                            <li>Tenants requesting transparent energy allocations</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>What it replaces</h3>
+                        <ul class="feature-list">
+                            <li>Manual spreadsheet calculations</li>
+                            <li>Opaque CAM reconciliation formulas</li>
+                            <li>Inconsistent allocation methodologies</li>
+                            <li>Time-consuming PDF generation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="micro-proof">
+                    <strong>Micro-proof:</strong> A 20-tenant building goes from data import to exported PDFs in under 30 seconds.
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section id="how" class="how-section section bg-light">
+            <div class="container">
+                <h2>How it works</h2>
+                <p class="section-intro">Three simple steps from import to export</p>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Import or enter data</h3>
+                        <p>One-click import from Utility Binder (includes factors, eGRID subregion, EPA Hub version) or manual entry of building energy totals and tenant square footage.</p>
+                        <div class="step-tooltip">
+                            <span class="tooltip-icon">ℹ️</span>
+                            <span class="tooltip-text">Utility Binder provides pre-calculated emission factors</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Validate shares</h3>
+                        <p>TenantShare automatically checks that tenant areas sum to ≤100% of building area. Any unallocated space is labeled as "landlord common area."</p>
+                        <div class="validation-banner">
+                            <span class="validation-icon">✓</span>
+                            <span>Shares validated: 96% allocated, 4% landlord</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Generate and export</h3>
+                        <p>Click "Generate Statements" to create individual PDFs for each tenant. Export all as a ZIP or download a CSV for accounting systems.</p>
+                        <ul class="export-formats">
+                            <li>📄 Individual PDFs</li>
+                            <li>📦 Batch ZIP</li>
+                            <li>📊 CSV export</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Grid -->
+        <section class="features-section section">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="/assets/icons/electricity.svg" alt="" class="feature-icon" aria-hidden="true">
+                        <h3>Area-based allocation</h3>
+                        <p>Allocate by tenant square footage with automatic proration</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="/assets/icons/gas.svg" alt="" class="feature-icon" aria-hidden="true">
+                        <h3>Dual-fuel subtotals</h3>
+                        <p>Separate electricity and natural gas allocations</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="/assets/icons/validate.svg" alt="" class="feature-icon" aria-hidden="true">
+                        <h3>Proration engine</h3>
+                        <p>Handles partial-year leases and mid-period moves</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Template library</h3>
+                        <p>Pre-built PDF layouts for different disclosure requirements</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="/assets/icons/export.svg" alt="" class="feature-icon" aria-hidden="true">
+                        <h3>Batch &amp; exports</h3>
+                        <p>Generate all tenant statements at once, export as ZIP or CSV</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Validations</h3>
+                        <p>Automatic checks for share totals, missing data, and unit mismatches</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Logs/version labels</h3>
+                        <p>Every statement includes basis, factors, eGRID version, and EPA Hub version</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <img src="/assets/icons/privacy.svg" alt="" class="feature-icon" aria-hidden="true">
+                        <h3>Local-first privacy</h3>
+                        <p>All data stays in your browser. Nothing uploaded to servers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Accuracy and Transparency -->
+        <section class="accuracy-section section bg-light">
+            <div class="container">
+                <h2>Accuracy and transparency</h2>
+                <p>TenantShare uses the same emission factors as Utility Binder: GHG Protocol-aligned, eGRID2023 subregion-specific electricity factors, and EPA Hub 2025 for natural gas.</p>
+                <p>Every statement includes a footer with the allocation basis (area-based), emission factors used, eGRID subregion, and version labels—ensuring full auditability.</p>
+                
+                <div class="citations-callout">
+                    <strong>Citations:</strong> GHG Protocol Scope 2 Guidance, EPA eGRID2023, EPA Emissions &amp; Generation Resource Integrated Database (eGRID) Hub 2025
+                </div>
+            </div>
+        </section>
+        
+        <!-- Privacy Section -->
+        <section id="privacy" class="privacy-section section">
+            <div class="container">
+                <h2>Privacy and client-side design</h2>
+                <p class="section-intro">Your data never leaves your device</p>
+                
+                <div class="privacy-features">
+                    <div class="privacy-item">
+                        <span class="privacy-icon">🔒</span>
+                        <div>
+                            <h3>Client-side only</h3>
+                            <p>All calculations happen in your browser. No servers, no uploads, no cloud storage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-item">
+                        <span class="privacy-icon">💾</span>
+                        <div>
+                            <h3>Local storage</h3>
+                            <p>Data saved to browser localStorage only. Export to PDF or CSV anytime.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-item">
+                        <span class="privacy-icon">🚫</span>
+                        <div>
+                            <h3>No tracking</h3>
+                            <p>No analytics cookies, no third-party scripts. Privacy-first by design.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-item">
+                        <span class="privacy-icon">⚙️</span>
+                        <div>
+                            <h3>Optional serverless backend</h3>
+                            <p>For teams needing shared access, an optional serverless backend (not included by default) can be self-hosted.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Integrations and Exports -->
+        <section class="integrations-section section bg-light">
+            <div class="container">
+                <h2>Integrations and exports</h2>
+                
+                <div class="integration-card">
+                    <h3>Import from Utility Binder</h3>
+                    <p>One-click import pulls building energy totals, emission factors, eGRID subregion, and EPA Hub version. No manual lookups.</p>
+                </div>
+                
+                <div class="exports-list">
+                    <h3>Export formats</h3>
+                    <ul>
+                        <li><strong>PDF:</strong> Individual tenant statements or batch ZIP</li>
+                        <li><strong>CSV:</strong> Structured data for accounting systems</li>
+                        <li><strong>JSON:</strong> Raw allocation data for custom integrations</li>
+                    </ul>
+                </div>
+                
+                <div class="zero-setup-note">
+                    <p><strong>Zero setup:</strong> No API keys, no authentication. Just load the page and import data.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Live Example Math -->
+        <section class="math-example-section section">
+            <div class="container">
+                <h2>Live example: allocation math</h2>
+                
+                <div class="math-example">
+                    <div class="example-input">
+                        <h3>Building Total</h3>
+                        <p><strong>10,000 kWh</strong> electricity</p>
+                        <p>Factor: <strong>0.498 kg CO₂e/kWh</strong> (eGRID2023, RFCE subregion)</p>
+                        <p>Total emissions: <strong>4,980 kg CO₂e</strong></p>
+                    </div>
+                    
+                    <div class="example-allocation">
+                        <h3>Tenant Areas</h3>
+                        <table class="allocation-table">
+                            <thead>
+                                <tr>
+                                    <th>Tenant</th>
+                                    <th>Area (sqft)</th>
+                                    <th>Share (%)</th>
+                                    <th>Allocated (kg CO₂e)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tenant A</td>
+                                    <td>5,000</td>
+                                    <td>50%</td>
+                                    <td><strong>2,490</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tenant B</td>
+                                    <td>3,000</td>
+                                    <td>30%</td>
+                                    <td><strong>1,494</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tenant C</td>
+                                    <td>2,000</td>
+                                    <td>20%</td>
+                                    <td><strong>996</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <details class="show-math">
+                        <summary>Show math</summary>
+                        <div class="math-breakdown">
+                            <p><strong>Calculation:</strong></p>
+                            <p>Tenant A: 10,000 kWh × 50% = 5,000 kWh × 0.498 = 2,490 kg CO₂e</p>
+                            <p>Tenant B: 10,000 kWh × 30% = 3,000 kWh × 0.498 = 1,494 kg CO₂e</p>
+                            <p>Tenant C: 10,000 kWh × 20% = 2,000 kWh × 0.498 = 996 kg CO₂e</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Templates Section -->
+        <section id="templates" class="templates-section section bg-light">
+            <div class="container">
+                <h2>Templates and PDF previews</h2>
+                <p class="section-intro">Choose from pre-built templates for different disclosure requirements</p>
+                
+                <div class="templates-carousel">
+                    <div class="template-preview">
+                        <div class="template-thumbnail">
+                            <div class="template-mock">
+                                <div class="mock-header">Standard Statement</div>
+                                <div class="mock-body">
+                                    <div class="mock-line"></div>
+                                    <div class="mock-line short"></div>
+                                </div>
+                                <div class="mock-footer">Basis: Area-based | eGRID2023 RFCE</div>
+                            </div>
+                        </div>
+                        <h3>Standard</h3>
+                        <p>Basic allocation with totals and factors</p>
+                    </div>
+                    
+                    <div class="template-preview">
+                        <div class="template-thumbnail">
+                            <div class="template-mock">
+                                <div class="mock-header">Detailed Statement</div>
+                                <div class="mock-body">
+                                    <div class="mock-line"></div>
+                                    <div class="mock-line"></div>
+                                    <div class="mock-line short"></div>
+                                </div>
+                                <div class="mock-footer">Basis: Area-based | Dual-fuel | eGRID2023</div>
+                            </div>
+                        </div>
+                        <h3>Detailed</h3>
+                        <p>Includes monthly breakdown and dual-fuel splits</p>
+                    </div>
+                    
+                    <div class="template-preview">
+                        <div class="template-thumbnail">
+                            <div class="template-mock">
+                                <div class="mock-header">GHG Protocol Statement</div>
+                                <div class="mock-body">
+                                    <div class="mock-line"></div>
+                                    <div class="mock-line short"></div>
+                                </div>
+                                <div class="mock-footer">GHG Protocol Scope 2 | eGRID2023 | EPA Hub 2025</div>
+                            </div>
+                        </div>
+                        <h3>GHG Protocol</h3>
+                        <p>Full compliance formatting with all citations</p>
+                    </div>
+                </div>
+                
+                <div class="template-cta">
+                    <a href="/assets/sample.pdf" download class="btn btn-secondary">Download a sample PDF</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Speed and Outcomes -->
+        <section class="speed-section section">
+            <div class="container">
+                <h2>Speed and outcomes</h2>
+                <p class="stat-headline">20-tenant building statements in under 30 seconds</p>
+                
+                <ul class="outcomes-list">
+                    <li>Reduce manual allocation time from hours to minutes</li>
+                    <li>Eliminate spreadsheet errors and version control issues</li>
+                    <li>Provide tenants with transparent, auditable statements</li>
+                    <li>Support ESG reporting and Scope 3 disclosure requirements</li>
+                </ul>
+                
+                <div class="bundle-note">
+                    <p><strong>Bundle impact:</strong> Using TenantShare alongside Utility Binder creates an end-to-end workflow from utility bill ingestion to tenant disclosure—no manual factor lookups, no copy-paste errors.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="roadmap-section section bg-light">
+            <div class="container">
+                <h2>Roadmap</h2>
+                
+                <div class="roadmap-list">
+                    <div class="roadmap-item">
+                        <span class="roadmap-status available">Available now</span>
+                        <h3>Core allocation &amp; PDF export</h3>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <span class="roadmap-status available">Available now</span>
+                        <h3>Utility Binder import</h3>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <span class="roadmap-status coming-soon">Coming soon</span>
+                        <h3>Multi-year comparison views</h3>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <span class="roadmap-status coming-soon">Coming soon</span>
+                        <h3>Sub-meter support for mixed-use buildings</h3>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <span class="roadmap-status coming-soon">Coming soon</span>
+                        <h3>White-label PDF templates</h3>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <span class="roadmap-status future">Future</span>
+                        <h3>Optional serverless backend for team sharing</h3>
+                    </div>
+                </div>
+                
+                <div class="transparency-note">
+                    <p><strong>Transparency note:</strong> TenantShare is open-source and community-driven. Features are prioritized based on user feedback and real-world property management needs.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section section">
+            <div class="container">
+                <h2>Pricing and availability</h2>
+                <p class="pricing-intro">TenantShare is currently in early access and <strong>free to use</strong>.</p>
+                <p>No signup, no credit card, no hidden costs. All features available client-side in your browser.</p>
+                
+                <div class="pricing-ctas">
+                    <button class="btn btn-primary btn-large" data-action="launch">Launch TenantShare</button>
+                    <a href="https://github.com/chaos-factory/ideator-execution-009-carbon-accounting-3-tenantshare/issues" class="btn btn-secondary btn-large" target="_blank" rel="noopener">Contact Us</a>
+                </div>
+                
+                <p class="pricing-note"><small>Future pricing (if introduced) will remain affordable for small property managers. Client-side functionality will always be free.</small></p>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section section bg-light">
+            <div class="container">
+                <h2>Frequently asked questions</h2>
+                
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>How accurate are the emission factors?</summary>
+                        <div class="faq-answer">
+                            <p>TenantShare uses the same factors as Utility Binder: eGRID2023 subregion-specific electricity factors and EPA Hub 2025 for natural gas. These are the most current, authoritative sources aligned with GHG Protocol Scope 2 guidance.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Can I use TenantShare for multiple buildings?</summary>
+                        <div class="faq-answer">
+                            <p>Yes. Each building is a separate allocation session. You can export data for each building and manage them independently in your browser's local storage.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>What if tenant areas don't add up to 100%?</summary>
+                        <div class="faq-answer">
+                            <p>TenantShare automatically calculates any unallocated space as "landlord common area" and flags it in the validation step. You can adjust shares or label common areas explicitly.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Do I need Utility Binder to use TenantShare?</summary>
+                        <div class="faq-answer">
+                            <p>No. While Utility Binder provides one-click import with pre-calculated factors, you can manually enter building totals and factors directly in TenantShare.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Is my data really private?</summary>
+                        <div class="faq-answer">
+                            <p>Yes. All data stays in your browser. No uploads, no servers, no cloud storage. You can inspect the source code to verify this.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Can I customize the PDF templates?</summary>
+                        <div class="faq-answer">
+                            <p>Currently, you can choose from pre-built templates. White-label customization (your logo, colors) is on the roadmap for a future release.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>What export formats are available?</summary>
+                        <div class="faq-answer">
+                            <p>Individual PDFs, batch ZIP of all tenant PDFs, CSV for accounting systems, and JSON for custom integrations.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Final CTA -->
+        <section class="final-cta-section section">
+            <div class="container">
+                <h2>Ready to simplify tenant energy statements?</h2>
+                <p>No signup required. Client-side only. Try it now.</p>
+                
+                <div class="final-ctas">
+                    <button class="btn btn-primary btn-large" data-action="launch">Launch TenantShare</button>
+                    <button class="btn btn-secondary btn-large" data-action="import">Import from Utility Binder</button>
+                    <a href="/assets/sample.pdf" download class="btn btn-outline btn-large">Download sample PDF</a>
+                </div>
+                
+                <p class="final-subtext">No signup required. Client-side only.</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="support" class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#product">Overview</a></li>
+                        <li><a href="#how">How it works</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="/assets/sample.pdf" download>Sample PDF</a></li>
+                        <li><a href="https://github.com/chaos-factory/ideator-execution-009-carbon-accounting-3-tenantshare" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="https://github.com/chaos-factory/ideator-execution-009-carbon-accounting-3-tenantshare/issues" target="_blank" rel="noopener">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://github.com/chaos-factory/ideator-execution-009-carbon-accounting-3-tenantshare/issues" target="_blank" rel="noopener">Report an issue</a></li>
+                        <li><a href="https://github.com/chaos-factory/ideator-execution-009-carbon-accounting-3-tenantshare/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-citations">
+                <p><strong>Citations:</strong> GHG Protocol Scope 2 Guidance | EPA eGRID2023 | EPA Emissions &amp; Generation Resource Integrated Database (eGRID) Hub 2025</p>
+            </div>
+            
+            <div class="footer-legal">
+                <p>&copy; 2024 TenantShare. Open source project.</p>
+                <p><small>Disclaimer: TenantShare provides allocation calculations based on user inputs and publicly available emission factors. Users are responsible for verifying data accuracy and compliance with applicable regulations. Not financial or legal advice.</small></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Sticky CTA -->
+    <div id="mobile-sticky-cta" class="mobile-sticky-cta">
+        <button class="btn btn-primary btn-block" data-action="launch">Launch TenantShare</button>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
